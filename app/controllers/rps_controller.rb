@@ -1,17 +1,12 @@
-class ViewController < ApplicationController
-  moves = ["rock", "paper", "scissors"]
-
-  def moves
-    moves = ["rock", "paper", "scissors"]
-    return moves.sample
-  end
+class RpsController < ApplicationController
+  MOVES = ["rock", "paper", "scissors"].freeze
 
   def homepage
     render({ :template => "templates/homepage" })
   end
 
   def rock
-    @computer_move = moves()
+    @computer_move = MOVES.sample
     if @computer_move == "rock"
       @outcome = "tied"
     elsif @computer_move == "paper"
@@ -23,7 +18,7 @@ class ViewController < ApplicationController
   end
 
   def paper
-    @computer_move = moves()
+    @computer_move = MOVES.sample
     if @computer_move == "rock"
       @outcome = "won"
     elsif @computer_move == "paper"
@@ -35,7 +30,7 @@ class ViewController < ApplicationController
   end
 
   def scissors
-    @computer_move = moves()
+    @computer_move = MOVES.sample
     if @computer_move == "rock"
       @outcome = "lost"
     elsif @computer_move == "paper"
